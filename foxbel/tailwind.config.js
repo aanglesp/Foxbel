@@ -1,0 +1,25 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  theme: {
+    extend: {
+      width: {
+        100: '1920px',
+      },
+      height: {
+        90: '1080px',
+      },
+      colors: {
+        darkred: '#662323',
+        principalred: '#E86060'
+      },
+      fontSize: {
+        '22px': '1.375rem'
+      },
+      fontFamily: {
+        quicksand: ['Quicksand', 'sans-serif']
+      }
+    },
+  },
+  plugins: [],
+}
