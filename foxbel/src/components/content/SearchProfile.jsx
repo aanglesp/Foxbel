@@ -3,14 +3,19 @@ import axios from "axios";
 import { FoxbelContext } from "../../App";
 
 export default function SearchProfile() {
-  const { setWord, word, searchArray, setSearchArray } = useContext(FoxbelContext);
-
-  useEffect(() => {
-    getSearch(word);
-    console.log(searchArray);
-  }, [word]);
+  const {
+    setWord,
+    word,
+    searchArray,
+    setSearchArray,
+    setSearch,
+    search,
+    setRecientes,
+    setAlbum
+  } = useContext(FoxbelContext);
 
   function getSearch(input) {
+    console.log(search)
     if (input.length !== "") {
       const options = {
         method: "GET",
@@ -30,11 +35,34 @@ export default function SearchProfile() {
           console.error(error);
         });
     } else {
-      console.log("nadin");
+      console.log("a");
     }
   }
-  const listItems = searchArray.map((item) => <li class="list-none text-base font-quicksand">{item.title}</li>);
 
+  useEffect(() => {
+    getSearch(word);
+  }, [word]);
+
+  useEffect(() => {
+    if(search.id != null){
+      setRecientes((oldArray) =>[...oldArray, search]);
+    }
+  }, [search]);
+
+  
+
+  const listItems = searchArray?.map((item, index) => (
+    <li
+      class="list-none text-base font-quicksand cursor-pointer pb-2 px-2 hover:bg-principalred hover:text-white rounded-xl"
+      key={index}
+      onClick={() => {
+        setSearch(item);
+        setAlbum(item.album.id)
+      }}
+    >
+      {item.title}
+    </li>
+  ));
   return (
     <div class="flex items-center justify-between w-full bg-blue pb-10">
       <div class="relative">
@@ -54,9 +82,13 @@ export default function SearchProfile() {
         >
           Search
         </button> */}
-        <div class="absolute right-30 top-10 drop-shadow-2xl bg-softgray w-[500px] h-20">
-          <div>{listItems}</div>
-        </div>
+        {word.length !== 0 ? (
+          <div class="absolute right-30 top-10 drop-shadow-2xl bg-white border-gray border-solid w-[500px] h-40 overflow-auto rounded-md">
+            <div class="p-3">{listItems}</div>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
       <div>
         <span>name</span>

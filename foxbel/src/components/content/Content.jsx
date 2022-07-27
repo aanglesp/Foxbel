@@ -7,14 +7,17 @@ import CardItem from "./CardItem";
 import { FoxbelContext } from "../../App";
 
 export default function Content() {
-  const { word } = useContext(FoxbelContext);
-
+  const { word, screenActive } = useContext(FoxbelContext);
   return (
     <div class="flex-col  px-48 w-[100%] pt-10">
       <SearchProfile />
       <Card />
-      <h2>title</h2>
-      <CardItem />
+      <h2 class="mb-10 text-principalred text-22px font-bold">
+        {screenActive}
+      </h2>
+      <div class="flex flex-wrap">
+        <CardItem/>
+      </div>
     </div>
   );
 }

@@ -13,7 +13,10 @@ module.exports = {
         darkred: '#662323',
         principalred: '#E86060',
         softgray: '#BDBDBD',
-        gray:'#828282'
+        gray:'#828282',
+        graydark: '#555555',
+        rose: '#EB5757',
+        lightred: '#FF7676'
       },
       fontSize: {
         '22px': '1.375rem'
