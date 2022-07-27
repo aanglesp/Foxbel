@@ -31,7 +31,6 @@ export default function Card() {
       });
   }
   
-  console.log(albumObj);
   return (
     <div class="flex h-[250px] font-quicksand mb-10">
       <div class="w-[250px] h-full bg-yellow-900">

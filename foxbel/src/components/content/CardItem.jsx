@@ -5,7 +5,7 @@ import { faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 
 export default function CardItem() {
   const { recientes, radios, screenActive, artists, albums, tracks } = useContext(FoxbelContext);
-  console.log(radios);
+
   const actualArray = [];
   // const objectToShow = {
   //   id:0,
@@ -31,7 +31,6 @@ export default function CardItem() {
   } else if (screenActive === "Artists") {
     actualArray.shift();
     if (artists.length > 0) {
-      console.log(artists);
       for (let i = 0; i < artists.length; i++) {
         const objectToShow = {
           id: artists[i].id,
@@ -45,7 +44,6 @@ export default function CardItem() {
   } else if (screenActive == "Albums") {
     actualArray.shift();
     if (albums.length > 0) {
-      console.log(albums);
       for (let i = 0; i < albums.length; i++) {
         const objectToShow = {
           id: albums[i].id,
@@ -57,7 +55,6 @@ export default function CardItem() {
       }
     }
   } else if (screenActive == "Canciones") {
-    console.log(tracks);
     for (let i = 0; i < albums.length; i++) {
       const objectToShow = {
         id: tracks[i].id,
@@ -70,7 +67,6 @@ export default function CardItem() {
   } else if (screenActive === "Estaciones") {
     actualArray.shift();
     if (radios.length > 0) {
-      console.log(radios);
       for (let i = 0; i < radios.length; i++) {
         const objectToShow = {
           id: radios[i].id,

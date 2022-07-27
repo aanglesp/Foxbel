@@ -15,7 +15,6 @@ export default function SearchProfile() {
   } = useContext(FoxbelContext);
 
   function getSearch(input) {
-    console.log(search)
     if (input.length !== "") {
       const options = {
         method: "GET",
