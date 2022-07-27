@@ -30,7 +30,7 @@ export default function Content() {
     console.log(artist);
   }, []);
   return (
-    <div>
+    <div class="flex-col  px-48 w-[100%] pt-10">
       <SearchProfile />
       <Card />
       <h2>title</h2>

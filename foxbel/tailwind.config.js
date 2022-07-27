@@ -11,7 +11,9 @@ module.exports = {
       },
       colors: {
         darkred: '#662323',
-        principalred: '#E86060'
+        principalred: '#E86060',
+        softgray: '#BDBDBD',
+        gray:'#828282'
       },
       fontSize: {
         '22px': '1.375rem'

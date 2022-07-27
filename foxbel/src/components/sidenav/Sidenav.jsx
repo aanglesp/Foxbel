@@ -4,7 +4,7 @@ import LogoFoxbel from "../../assets/foxbel-music.png";
 export default function sidenav() {
   return (
     <aside
-      class="flex-col w-[20%] bg-darkred min-h-screen pl-10 pt-10"
+      class="flex-col w-[25%] bg-darkred min-h-screen pl-10 pt-10"
       aria-label="Sidebar"
     >
       <div class="flex justify-content-center w-full pb-5">
