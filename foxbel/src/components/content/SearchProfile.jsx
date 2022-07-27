@@ -1,6 +1,40 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import axios from "axios";
+import { FoxbelContext } from "../../App";
 
 export default function SearchProfile() {
+  const { setWord, word, searchArray, setSearchArray } = useContext(FoxbelContext);
+
+  useEffect(() => {
+    getSearch(word);
+    console.log(searchArray);
+  }, [word]);
+
+  function getSearch(input) {
+    if (input.length !== "") {
+      const options = {
+        method: "GET",
+        url: `https://deezerdevs-deezer.p.rapidapi.com/search?q=${input}`,
+        headers: {
+          "X-RapidAPI-Key":
+            "9afc103fb7msh3273c4fd7dcdff1p153192jsn0566c3dff09a",
+          // "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+        },
+      };
+      axios
+        .request(options)
+        .then(function (response) {
+          setSearchArray(response.data.data);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    } else {
+      console.log("nadin");
+    }
+  }
+  const listItems = searchArray.map((item) => <li class="list-none text-base font-quicksand">{item.title}</li>);
+
   return (
     <div class="flex items-center justify-between w-full bg-blue pb-10">
       <div class="relative">
@@ -10,6 +44,9 @@ export default function SearchProfile() {
           class="block p-4 w-[500px] h-[36px] text-softgray bg-white rounded-[6.25rem] border border-gray font-quicksand font-normal text-base"
           placeholder="Buscar"
           required
+          onChange={(e) => {
+            setWord(e.target.value);
+          }}
         ></input>
         {/* <button
           type="submit"
@@ -17,6 +54,9 @@ export default function SearchProfile() {
         >
           Search
         </button> */}
+        <div class="absolute right-30 top-10 drop-shadow-2xl bg-softgray w-[500px] h-20">
+          <div>{listItems}</div>
+        </div>
       </div>
       <div>
         <span>name</span>
